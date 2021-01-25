@@ -2,7 +2,9 @@
     <el-container class="top-wrap">
         <HeaderBar class="header"></HeaderBar>
         <el-container class="content">
-            <el-aside class="sider">Aside</el-aside>
+            <el-aside class="sider" width="200px">
+                <MenuBar/>
+            </el-aside>
             <el-main class="main">
                 <router-view/>
             </el-main>
@@ -43,11 +45,10 @@
                 background-color: #D3DCE6;
                 color: #333;
                 text-align: center;
-                width: 200px;
             }
 
             .main {
-                background-color: #E9EEF3;
+                background-color: #ffffff;
                 color: #333;
                 text-align: center;
                 line-height: 160px;

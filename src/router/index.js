@@ -1,22 +1,29 @@
-import Router from "vue-router"
-import creatRoute from "./lib/creatRoute"
-import store from "../store"
+import Vue from 'vue'
+import Router from 'vue-router'
+import NProgress from 'nprogress' // progress bar
+import 'nprogress/nprogress.css'// progress bar style
+import { getRoutes } from './lib'
 
-const routes = creatRoute(store.getters.router)
-const createOptions = routes => {
-    return {
-        scrollBehavior: () => ({ y: 0 }),
-        routes,
-    }
-}
-const createRouter = routes => new Router(createOptions(routes))
+Vue.use(Router)
+// 关闭loading
+NProgress.configure({ showSpinner: false })// NProgress Configuration
 
-const router = createRouter(routes)
+const router = new Router({
+    routes: getRoutes()
+})
 
-export const resetRouter = routerConfig => {
-    router.matcher = new Router(createOptions([])).matcher
-    router.addRoutes(creatRoute(routerConfig))
-    store.commit('RESETROUTER', routerConfig)
-}
+
+//路由钩子
+router.beforeEach((to, from, next) => {
+    NProgress.start()
+    next()
+})
+
+//路由钩子 --- 进入后： 回到顶部
+router.afterEach(() => {
+    NProgress.done()
+    window.scrollTo(0, 0)
+})
+
 
 export default router

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <Menu
+        <el-menu
             ref="menu"
             :active-name="activeName"
             theme="light"
@@ -8,19 +8,19 @@
             :open-names="openNames"
         >
             <template v-for="item in menus">
-                <DeepItem :menu="item"/>
+                <menu-item :menu="item"/>
             </template>
-        </Menu>
+        </el-menu>
     </div>
 </template>
 
 <script>
     import { mapGetters } from "vuex"
-    import DeepItem from "./menu"
+    import MenuItem from "./menuItem"
 
     export default {
-        name: `MenuBar`,
-        components: { DeepItem },
+        name: 'MenuBar',
+        components: { MenuItem },
         data() {
             return {
                 activeName: ``,
@@ -29,7 +29,7 @@
         },
         computed: {
             ...mapGetters({
-                menus: `menus`,
+                menus: 'menus',
             }),
         },
         watch: {
@@ -46,9 +46,10 @@
         },
         methods: {
             getPath() {
-                let path = location.href.split(`#`)[1]
-                path = path.split(`?`)[0]
-                path = path.split(`:`)[0]
+                let path = location.href.split('#')[1]
+                path = path.split('?')[0]
+                path = path.split(':')[0]
+                console.log(path);
                 return path
             },
 
@@ -73,7 +74,4 @@
 </script>
 
 <style scoped>
-    .ivu-menu-vertical.ivu-menu-light:after{
-        background:none;
-    }
 </style>

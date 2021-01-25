@@ -1,11 +1,15 @@
 <template>
     <div class="app">
-        <router-view v-if="infoData"/>
+        <Layout/>
     </div>
 </template>
 
 <script>
+    import Layout from '@/components/layout/Layout'
+
     export default {
+        name: 'app',
+        components: { Layout },
         data() {
             return {
                 infoData: {},

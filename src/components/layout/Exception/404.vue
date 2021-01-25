@@ -1,7 +1,7 @@
 <template>
     <div class="Page404">
-        <el-card :bordered="false">
-            <p slot="title">
+        <el-card>
+            <p slot="header">
                 404
             </p>
             <p>page not found</p>
