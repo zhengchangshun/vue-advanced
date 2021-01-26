@@ -8,7 +8,7 @@ import 'normalize.css/normalize.css'
 import 'element-ui/lib/theme-chalk/index.css';
 import "@/assets/css/common.css"
 
-if (process.env.VUE_APP_MOCK===true && process.env.NODE_ENV === 'development') {
+if (process.env.VUE_APP_MOCK && process.env.NODE_ENV === 'development') {
     require("../mock");
 }
 

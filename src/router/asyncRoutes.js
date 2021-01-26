@@ -3,8 +3,8 @@ export default [
     {
         path: '/about',
         name: 'About',
+        redirect: '/about/a',
         component: () => import ('@views/about'),
-        redirect: '/about/about',
         meta: {
             icon: '',
             title: '关于部分',
@@ -13,22 +13,23 @@ export default [
         },
         children: [
             {
-                path: 'about',
-                component: () => import ('@views/about/about.vue'),
+                path: '/about/a',
+                name: 'aboutA',
+                component: () => import ('@views/about/a.vue'),
                 meta: {
                     icon: '',
-                    title: '关于',
+                    title: '关于-a',
                     auth: ['admin'],
                     isMenu: true,
                 },
             },
             {
-                path: '/about/doc',
-                name: 'About',
-                component: () => import ('@views/about/doc.vue'),
+                path: '/about/b',
+                name: 'aboutB',
+                component: () => import ('@views/about/b.vue'),
                 meta: {
                     icon: '',
-                    title: '关于-doc',
+                    title: '关于-b',
                     auth: ['admin'],
                     isMenu: false,
                 }

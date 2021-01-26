@@ -2,6 +2,7 @@ import _ from 'lodash';
 import commonRoutes from '@/router/commonRoutes'
 import asyncRoutes from '@/router/asyncRoutes'
 import { queryUserInfo } from '@/service/global'
+import de from "element-ui/src/locale/lang/de";
 
 const actions = {
     // 获取权限数据

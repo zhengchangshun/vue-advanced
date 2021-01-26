@@ -3,7 +3,7 @@
  */
 
 export default {
-    UNLOGIN_CODE: `502`,
+    UNLOGIN_CODE: '403',
     SUCCESS_CODE: [0, 200],
     TIMEOUT: 10000,
     ERROR_RETCODE: -2, //请求错误时返回code

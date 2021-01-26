@@ -6,18 +6,17 @@
  * - result : 返回信息结构体，必须为Object
  * httpConfig: http请求配置
  */
+import { Message } from 'element-ui';
 import CONFIG from "@/config/httpConfig"
 import axiosFactory from "axios"
-import VUE from "vue"
 
-const Vue = new VUE()
-
+let loadingInstance = null
 // 新建axios实例，避免污染全局axios
 const axios = axiosFactory.create({})
 // 错误处理通用方法
 const errorHandler = function (res) {
     if (res.config.loading) {
-        Vue.$Spin && Vue.$Spin.hide()
+        loadingInstance && loadingInstance.close();
     }
 
     // 登录失效的返回码 统一都跳转到登录页
@@ -28,8 +27,8 @@ const errorHandler = function (res) {
         return
     }
 
-    let _msg = res.data.retDesc || `未知错误`
-    Vue.$Message && Vue.$Message.error(_msg)
+    let message = res.data.retDesc || `未知错误`
+    Message.error({ message })
     // 抛出错误
     return Promise.reject(res)
 }
@@ -59,20 +58,13 @@ axios.interceptors.request.use(
 axios.interceptors.response.use(
     res => {
         if (res.config.loading) {
-            Vue.$Spin.hide()
+            loadingInstance && loadingInstance.close()
         }
 
         let data = res.data
 
-        if (CONFIG.SUCCESS_CODE.includes(data.retCode)) {
-            let result = data.result
-            if (res.config.parseContent && result.content) {
-                let type = typeof result.content
-                if (type.toLowerCase() === `string`) {
-                    result.content = JSON.parse(result.content)
-                }
-            }
-            return Promise.resolve(data.result)
+        if (CONFIG.SUCCESS_CODE.includes(data.code)) {
+            return Promise.resolve(data.data)
         } else {
             return errorHandler(res)
         }
@@ -116,7 +108,7 @@ methods.forEach(m => {
         }
 
         if (config.loading) {
-            Vue.$Spin.show()
+            loadingInstance = Loading.service({ fullscreen: true });
         }
 
         // post和其他method区分

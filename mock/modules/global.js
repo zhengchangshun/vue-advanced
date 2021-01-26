@@ -1,7 +1,7 @@
 // modules/global.js
 const queryUserInfo = {
-    url: "/api/queryUserInfo",
-    type: "GET",
+    url: /api\/queryUserInfo/,
+    type: 'get',
     response: () => {
         return {
             code: 200,
