@@ -1,12 +1,16 @@
 import Vue from "vue"
-import store from "./store/index"
-import router from "./router/index"
+import store from "./store"
+import router from "./router"
 import ElementUI from 'element-ui';
-import app from "./App.vue"
 import MyPlugin from "@/plugin"
+import app from "./App.vue"
 import 'normalize.css/normalize.css'
 import 'element-ui/lib/theme-chalk/index.css';
 import "@/assets/css/common.css"
+
+if (process.env.VUE_APP_MOCK===true && process.env.NODE_ENV === 'development') {
+    require("../mock");
+}
 
 Vue.use(ElementUI)
 Vue.use(MyPlugin)

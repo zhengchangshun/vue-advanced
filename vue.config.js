@@ -2,6 +2,7 @@ const path = require('path')
 
 const proxyApi = ['/api'];
 const port = process.env.port || 8060;
+console.log(port);
 const target = process.env.proxyTarget || undefined
 
 // 代理转发
@@ -44,6 +45,6 @@ module.exports = {
             .set('@', resolve('src'))
             .set('@components', resolve('src/components'))
             .set('@lib', resolve('src/lib'))
-            .set('@view', resolve('src/view'))
+            .set('@views', resolve('src/views'))
     }
 }

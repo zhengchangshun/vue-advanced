@@ -3,7 +3,6 @@
  */
 
 export default {
-    BASE_URL: `/api`,
     UNLOGIN_CODE: `502`,
     SUCCESS_CODE: [0, 200],
     TIMEOUT: 10000,

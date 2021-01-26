@@ -37,7 +37,7 @@ const errorHandler = function (res) {
 // 请求拦截器
 axios.interceptors.request.use(
     config => {
-        config.url = CONFIG.BASE_URL + config.url
+        config.url = config.url
         config.timeout || (config.timeout = CONFIG.TIMEOUT)
 
         return config

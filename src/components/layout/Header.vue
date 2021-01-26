@@ -7,7 +7,7 @@
             <el-dropdown @command="dropdownClick">
                 <span>
                     <Icon type="el-icon-s-custom" class="user-icon"/>
-                <span>您好，{{ info.userName }}</span>
+                <span>您好，{{ userInfo.userName }}</span>
                 <Icon type="el-icon-arrow-down"/>
                 </span>
                 <el-dropdown-menu slot="dropdown">
@@ -19,15 +19,12 @@
 </template>
 
 <script>
+    import { mapState } from "vuex";
+
     export default {
         name: `HeaderBar`,
-        data() {
-            return {
-                info: {}
-            }
-        },
-        mounted() {
-            this.info = {}
+        computed:{
+            ...mapState(['userInfo']),
         },
         methods: {
             dropdownClick(v) {

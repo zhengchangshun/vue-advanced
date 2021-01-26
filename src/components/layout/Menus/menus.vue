@@ -7,7 +7,7 @@
             width="auto"
             :open-names="openNames"
         >
-            <template v-for="item in menus">
+            <template v-for="item in menuList">
                 <menu-item :menu="item"/>
             </template>
         </el-menu>
@@ -15,7 +15,7 @@
 </template>
 
 <script>
-    import { mapGetters } from "vuex"
+    import { mapState } from "vuex"
     import MenuItem from "./menuItem"
 
     export default {
@@ -28,21 +28,19 @@
             }
         },
         computed: {
-            ...mapGetters({
-                menus: 'menus',
-            }),
+            ...mapState(['menuList']),
         },
         watch: {
             openNames() {
-                this.$nextTick(() => {
-                    this.$refs.menu.updateOpened()
-                    this.$refs.menu.updateActiveName()
-                })
+                // this.$nextTick(() => {
+                //     this.$refs.menu.updateOpened()
+                //     this.$refs.menu.updateActiveName()
+                // })
             },
         },
 
         mounted() {
-            this.getCurrentMenu(this.menus)
+            // this.getCurrentMenu(this.menus)
         },
         methods: {
             getPath() {
