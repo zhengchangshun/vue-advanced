@@ -2,7 +2,6 @@ const path = require('path')
 
 const proxyApi = ['/api'];
 const port = process.env.port || 8060;
-console.log(port);
 const target = process.env.proxyTarget || undefined
 
 // 代理转发

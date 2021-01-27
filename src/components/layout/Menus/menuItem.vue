@@ -4,7 +4,11 @@
             <el-submenu :index="menu.name">
                 <template slot="title">
                     <span @click="goUrl(menu.path)">
-                        <Icon v-if="menu.icon" :type="menu.icon"/>
+                        <Icon
+                            v-if="menu.meta && menu.meta.icon"
+                            :type="menu.meta.icon"
+                            class="menu-icon"
+                        />
                     {{ menu.meta.title }}
                     </span>
                 </template>
@@ -17,7 +21,11 @@
             <el-menu-item :index="menu.name">
                 <template slot="title">
                     <span @click="goUrl(menu.path)">
-                        <Icon v-if="menu.icon" :type="menu.icon"/>
+                         <Icon
+                             v-if="menu.meta && menu.meta.icon"
+                             :type="menu.meta.icon"
+                             class="menu-icon"
+                         />
                         {{ menu.meta.title }}
                     </span>
                 </template>
@@ -38,4 +46,12 @@
     }
 </script>
 
-<style scoped></style>
+<style lang="less">
+    .el-menu {
+        .el-menu-item,.el-submenu__title {
+            text-align: left;
+            padding-left:30px !important;
+        }
+    }
+
+</style>

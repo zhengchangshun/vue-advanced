@@ -4,7 +4,7 @@ export default [
         name: 'Home',
         component: () => import ('@views/index/index.vue'),
         meta: {
-            icon: '',
+            icon: 'el-icon-s-home',
             title: '首页',
             isMenu: true,
         }

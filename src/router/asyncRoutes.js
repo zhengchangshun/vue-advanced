@@ -6,7 +6,7 @@ export default [
         redirect: '/about/a',
         component: () => import ('@views/about'),
         meta: {
-            icon: '',
+            icon: 'el-icon-s-unfold',
             title: '关于部分',
             auth: ['admin'],
             isMenu: true,
