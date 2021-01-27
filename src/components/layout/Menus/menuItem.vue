@@ -1,11 +1,10 @@
 <template>
-    <div v-if="!menu.hidden">
+    <div class="menu-item-wrap">
         <template v-if="menu.children">
-            <el-submenu :index="menu.name">
+            <el-submenu :index="menu.path" class="sub-menu-wrap">
                 <template slot="title">
-                    <span @click="goUrl(menu.path)">
+                    <span>
                         <Icon
-                            v-if="menu.meta && menu.meta.icon"
                             :type="menu.meta.icon"
                             class="menu-icon"
                         />
@@ -18,17 +17,14 @@
             </el-submenu>
         </template>
         <template v-else>
-            <el-menu-item :index="menu.name">
-                <template slot="title">
-                    <span @click="goUrl(menu.path)">
-                         <Icon
-                             v-if="menu.meta && menu.meta.icon"
-                             :type="menu.meta.icon"
-                             class="menu-icon"
-                         />
-                        {{ menu.meta.title }}
-                    </span>
-                </template>
+            <el-menu-item :index="menu.path">
+                <span>
+                     <Icon
+                         :type="menu.meta.icon"
+                         class="menu-icon"
+                     />
+                    {{ menu.meta.title }}
+                </span>
             </el-menu-item>
         </template>
     </div>
@@ -47,11 +43,26 @@
 </script>
 
 <style lang="less">
-    .el-menu {
-        .el-menu-item,.el-submenu__title {
+    .menu-item-wrap {
+        &:hover {
+            background: red;
+        }
+
+        .menu-icon {
+            font-size: 16px;
+            margin-right: 6px;
+            color: #ffffff;
+        }
+
+        .el-menu-item, .el-submenu__title {
             text-align: left;
-            padding-left:30px !important;
+            font-weight: normal;
+
+        }
+
+        .is-active {
+            font-weight: 500;
+            background: rgb(0 196 192);
         }
     }
-
 </style>

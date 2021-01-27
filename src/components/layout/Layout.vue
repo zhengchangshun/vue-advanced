@@ -2,7 +2,7 @@
     <el-container class="top-wrap">
         <HeaderBar class="header"></HeaderBar>
         <el-container class="content">
-            <el-aside class="sider" width="200px">
+            <el-aside class="sider" width="180px">
                 <MenuBar/>
             </el-aside>
             <el-main class="main">
@@ -40,11 +40,8 @@
 
         .content {
             flex: auto;
-
             .sider {
-                background-color: #D3DCE6;
-                color: #333;
-                text-align: center;
+                background-color: #28292f;
             }
 
             .main {

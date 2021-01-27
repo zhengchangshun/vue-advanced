@@ -1,21 +1,21 @@
 <template>
-    <div>
-        <el-menu
-            ref="menu"
-            :active-name="activeName"
-            theme="light"
-            width="auto"
-            :open-names="openNames"
-        >
-            <template v-for="item in menuList">
-                <menu-item :menu="item"/>
-            </template>
-        </el-menu>
-    </div>
+    <el-menu
+        ref="menu"
+        width="auto"
+        router
+        background-color="#28292f"
+        text-color="#ffffff"
+        :default-active="active"
+    >
+        <template v-for="item in menuList">
+            <menu-item :menu="item"/>
+        </template>
+    </el-menu>
 </template>
 
 <script>
     import { mapState } from "vuex"
+    import { getHashPath } from '@/lib/util'
     import MenuItem from "./menuItem"
 
     export default {
@@ -23,7 +23,7 @@
         components: { MenuItem },
         data() {
             return {
-                activeName: ``,
+                active: '/',
                 openNames: [],
             }
         },
@@ -40,36 +40,15 @@
         },
 
         mounted() {
-            // this.getCurrentMenu(this.menus)
+            this.active =  getHashPath()
         },
         methods: {
-            getPath() {
-                let path = location.href.split('#')[1]
-                path = path.split('?')[0]
-                path = path.split(':')[0]
-                console.log(path);
-                return path
-            },
-
-            getCurrentMenu(menus, parent) {
-                let path = this.getPath()
-                for (var i = 0; i < menus.length; i++) {
-                    let menu = menus[i]
-                    if (menu.path === path) {
-                        this.activeName = menu.name
-                        if (parent) {
-                            this.openNames.push(parent.name)
-                        }
-                        break
-                    }
-                    if (menu.children) {
-                        this.getCurrentMenu(menu.children, menu)
-                    }
-                }
-            },
         },
     }
 </script>
 
-<style scoped>
+<style lang="less">
+    .el-menu {
+        width: 180px;
+    }
 </style>

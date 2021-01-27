@@ -4,6 +4,7 @@ import store from '@/store'
 import NProgress from 'nprogress' // progress bar
 import 'nprogress/nprogress.css'// progress bar style
 import commonRoutes from './commonRoutes'
+import exceptionRoute from './exceptionRoute'
 
 Vue.use(Router)
 // 关闭loading
@@ -26,13 +27,13 @@ router.beforeEach((to, from, next) => {
             store.dispatch('getPermission', role).then(() => {
                 // 根据用户角色，动态添加权限路由
                 router.addRoutes(store.state.routes)
+                router.addRoutes(exceptionRoute)
                 next({ ...to, replace: true })
             })
         })
     } else { // infoLength为false 说明是静态点击，不需要任何操作
         next()
     }
-    next()
 })
 
 //路由钩子 --- 进入后： 回到顶部
