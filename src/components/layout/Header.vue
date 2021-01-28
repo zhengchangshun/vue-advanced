@@ -1,14 +1,15 @@
 <template>
-    <el-header>
+    <el-header class="header-wrap">
         <div class="layout-logo">
-            cost-center
+            <div class="logo-text">成本中心</div>
+            <div class="logo-es">Cost Center</div>
         </div>
         <div class="layout-nav">
-            <el-dropdown @command="dropdownClick">
+            <el-dropdown @command="dropdownClick" class="drop-menu">
                 <span>
                     <Icon type="el-icon-s-custom" class="user-icon"/>
-                <span>您好，{{ userInfo.userName }}</span>
-                <Icon type="el-icon-arrow-down"/>
+                    <span class="user-info">您好，{{ userInfo.userName }}</span>
+                    <Icon type="el-icon-arrow-down"/>
                 </span>
                 <el-dropdown-menu slot="dropdown">
                     <el-dropdown-item command="logout">登出</el-dropdown-item>
@@ -23,7 +24,7 @@
 
     export default {
         name: `HeaderBar`,
-        computed:{
+        computed: {
             ...mapState(['userInfo']),
         },
         methods: {
@@ -37,27 +38,42 @@
 </script>
 
 <style lang="less" scoped>
+    .header-wrap {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
     .layout-logo {
-        width: 100px;
-        height: 30px;
-        line-height: 30px;
-        color: #fff;
-        text-align: center;
-        background: #5b6270;
-        float: left;
-        position: relative;
-        top: 15px;
-        left: 20px;
+        width: 180px;
+        height:100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        .logo-text{
+            font-size:22px;
+            margin-bottom:6px;
+            font-family: "华文行楷","Microsoft YaHei", "黑体";
+        }
+        .logo-es{
+            font-size:12px;
+        }
     }
 
     .layout-nav {
-        position: absolute;
-        right: 20px;
+        margin-right: 20px;
+
+        .drop-menu {
+            color: #fff;
+        }
 
         .user-icon {
             font-size: 20px;
+        }
+
+        .user-info {
             margin: 0 10px;
-            color: #fff;
         }
     }
 </style>

@@ -2,11 +2,13 @@
     <el-container class="top-wrap">
         <HeaderBar class="header"></HeaderBar>
         <el-container class="content">
-            <el-aside class="sider" width="180px">
+            <el-aside class="sider" width="200px">
                 <MenuBar/>
             </el-aside>
             <el-main class="main">
-                <router-view/>
+                <div class="main-content">
+                    <router-view/>
+                </div>
             </el-main>
         </el-container>
     </el-container>
@@ -26,33 +28,32 @@
 <style lang="less" scoped>
     .top-wrap {
         display: flex;
-        flex-direction:column;
+        flex-direction: column;
         width: 100%;
         height: 100%;
 
         .header {
-            background-color: #B3C0D1;
-            color: #333;
-            text-align: center;
-            line-height: 60px;
-            height: 60px;
+            background-color: #2A9532;
+            color: #ffffff;
+            padding: 0;
         }
 
         .content {
             flex: auto;
-            .sider {
-                background-color: #28292f;
-            }
 
             .main {
-                background-color: #ffffff;
-                color: #333;
-                text-align: center;
-                line-height: 160px;
+                background-color: #f2f2f2;
+                padding: 10px;
+                display: flex;
+                flex-direction: column;
+
+                .main-content {
+                    flex: 1;
+                    padding: 10px 20px;
+                    background-color: #ffffff;
+                }
             }
         }
-
-
     }
 
 </style>

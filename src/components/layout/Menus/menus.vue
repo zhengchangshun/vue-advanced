@@ -1,10 +1,7 @@
 <template>
     <el-menu
         ref="menu"
-        width="auto"
         router
-        background-color="#28292f"
-        text-color="#ffffff"
         :default-active="active"
     >
         <template v-for="item in menuList">
@@ -48,7 +45,4 @@
 </script>
 
 <style lang="less">
-    .el-menu {
-        width: 180px;
-    }
 </style>
