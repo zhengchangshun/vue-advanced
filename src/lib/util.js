@@ -34,4 +34,5 @@ export const setTitle = function (title) {
 export const capitalize = str => str.charAt(0).toUpperCase() + str.slice(1)
 
 // 获取hash路径
-export const getHashPath = () => window.location.hash
+export const getHashPath = () => window.location.hash.split('#')[1].split('?')[0]
+

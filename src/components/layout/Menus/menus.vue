@@ -37,6 +37,7 @@
         },
 
         mounted() {
+
             this.active =  getHashPath()
         },
         methods: {
