@@ -17,22 +17,30 @@ export function getQueryObject(url) {
     return obj
 }
 
-/**
- * @param {title} String
- * @return 设置浏览器标题
- */
-export const setTitle = function (title) {
-    title = title || `Title`
-    window.document.title = title
-}
-
 
 /**
- * Capitalize a string.
  * 首字符大写
  */
 export const capitalize = str => str.charAt(0).toUpperCase() + str.slice(1)
 
-// 获取hash路径
+/**
+ * 获取当前Url的hash路由
+ */
 export const getHashPath = () => window.location.hash.split('#')[1].split('?')[0]
 
+/**
+ * 获取树状结构 子节点 - 父节点的映射
+ */
+export const getFamilyTree = (treeList = [], key, parentValue) => {
+    let obj = {};
+    treeList.forEach($item => {
+        const childrenValue = $item[key];
+        const children = $item.children;
+        obj[childrenValue] = parentValue
+        if (children && children.length) {
+            let childrenObj = getFamilyTree(children, key, $item)
+            obj = Object.assign({}, obj, childrenObj)
+        }
+    })
+    return obj
+}

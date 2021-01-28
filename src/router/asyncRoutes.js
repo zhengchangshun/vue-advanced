@@ -17,7 +17,6 @@ export default [
                 name: 'aboutA',
                 component: () => import ('@views/about/a.vue'),
                 meta: {
-                    icon: '',
                     title: '关于-a',
                     auth: ['admin'],
                     isMenu: true,
@@ -28,11 +27,10 @@ export default [
                 name: 'aboutB',
                 component: () => import ('@views/about/b.vue'),
                 meta: {
-                    icon: '',
                     title: '关于-b',
                     auth: ['admin'],
                     isMenu: false,
-                }
+                },
             },
         ]
     },

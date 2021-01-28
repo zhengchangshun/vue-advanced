@@ -4,7 +4,7 @@
             <el-submenu :index="menu.path">
                 <template slot="title">
                     <div class="menu-item-wrap">
-                        <Icon :type="menu.meta.icon" class="menu-icon"/>
+                        <Icon :type="menu.meta && menu.meta.icon" class="menu-icon"/>
                         <span>{{ menu.meta.title }}</span>
                     </div>
                 </template>
@@ -16,7 +16,7 @@
         <template v-else>
             <el-menu-item :index="menu.path">
                 <div class="menu-item-wrap">
-                    <Icon :type="menu.meta.icon" class="menu-icon"/>
+                    <Icon :type="menu.meta && menu.meta.icon" class="menu-icon"/>
                     <span>{{ menu.meta.title }}</span>
                 </div>
             </el-menu-item>

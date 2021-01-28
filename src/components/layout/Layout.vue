@@ -6,6 +6,7 @@
                 <MenuBar/>
             </el-aside>
             <el-main class="main">
+                <Breadcrumb/>
                 <div class="main-content">
                     <router-view/>
                 </div>
@@ -15,13 +16,15 @@
 </template>
 
 <script>
-    import MenuBar from "./Menus/menus"
-    import HeaderBar from "./Header"
+    import MenuBar from './Menus/menus'
+    import HeaderBar from './Header'
+    import Breadcrumb from './Breadcrumb'
 
     export default {
         components: {
             HeaderBar,
             MenuBar,
+            Breadcrumb,
         },
     }
 </script>
@@ -43,7 +46,7 @@
 
             .main {
                 background-color: #f2f2f2;
-                padding: 10px;
+                padding: 10px 10px ;
                 display: flex;
                 flex-direction: column;
 
