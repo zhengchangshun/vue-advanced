@@ -1,4 +1,4 @@
-# vue 架手架
+# vue 脚手架
  
  包含vue + vue-router + vuex + elementUI ，配置好了权限路由，菜单部分等
 
